@@ -60,3 +60,6 @@ A Database backed Web-App that allows users (and guests*) to:
 - Api for getting data about different drinks (https://www.thecocktaildb.com/api.php)
 - What foods go well with what drink 
 - Share on social media platform a custom recipe/ fav drink
+
+### ERD
+![](MixologyERD.png)
