@@ -6,17 +6,14 @@
         <property name="show_sql">true</property>
         <property name="hibernate.connection.pool_size">5</property>
         
-        <!--  EDIT THIS SECTION TOGETHER WITH ENV VARS
-        
-        
+
         <property name="hibernate.connection.username">yourUsername</property>
         <property name="hibernate.connection.password">yourPassword</property>
         <property name="hibernate.connection.url">jdbc:postgresql://host:port/databasename</property>
-        <property name="hibernate.default_schema">bears</property>
-        <property name="hibernate.hbm2ddl.auto">create</property> 
-        <mapping class="com.revature.models.Bear" />
-        <mapping class="com.revature.models.Den" />
-        
-         -->
+        <property name="hibernate.default_schema">project2</property> 
+        <mapping class="com.mixology.models.Drinks" />
+        <mapping class="com.mixology.models.Ingredients" />
+		<mapping class="com.mixology.models.Reviews" />
+		<mapping class="com.mixology.models.Users" />
     </session-factory>
 </hibernate-configuration>
