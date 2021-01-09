@@ -34,17 +34,15 @@ public class DrinkServiceImpl implements DrinkService{
 	}
 
 	@Override
-	public Drinks findDrinksByName(String name) {
-		return dd.findDrinksByName(name);
-	}
+	public Drinks findDrinksByName(String name) { return dd.findDrinksByName(name);	}
 
 	@Override
-	public Drinks findByCreator(Users u) {
+	public List<Drinks> findByCreator(Users u) {
 		return dd.findDrinksByDrinkCreator(u);
 	}
 
 	@Override
-	public Drinks findDrinksByDegree(int degree) {
+	public List<Drinks> findDrinksByDegree(int degree) {
 		return dd.findDrinksByDegree(degree);
 	}
 

@@ -55,4 +55,5 @@ public class UserController {
 		return new ResponseEntity<List<Drinks>>(us.findAllFavoriteDrinks(userId),HttpStatus.OK);
 	}
 	 */
+
 }

@@ -10,16 +10,16 @@ public interface DrinkService {
 	
 	  public List<Drinks> findAllDrinks();
 
-	    public Drinks findDrinkById(int id);
+	  public Drinks findDrinkById(int id);
 
-	    public Drinks saveDrink(Drinks d);
+	  public Drinks saveDrink(Drinks d);
 
-	    public Drinks findDrinksByName(String name);
+	  public Drinks findDrinksByName(String name);
 	    
-	    public Drinks findByCreator(Users u);
+	  public List<Drinks> findByCreator(Users u);
 	    
-	    public Drinks findDrinksByDegree(int degree);
+	  public List<Drinks> findDrinksByDegree(int degree);
 	    
-	    public List<Drinks> findDrinksByIngredientName(String ingredientName);
+	  public List<Drinks> findDrinksByIngredientName(String ingredientName);
 	    
 }

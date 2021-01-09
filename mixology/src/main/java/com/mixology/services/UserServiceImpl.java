@@ -12,33 +12,32 @@ import com.mixology.models.Users;
 import com.mixology.repositories.UsersDAO;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
-    private UsersDAO ud;
+    UsersDAO ud;
     DrinksDAO dd;
     FavoritesDAO fd;
 
     @Autowired
-    //public UserServiceImpl(UsersDAO ud, DrinksDAO dd, FavoritesDAO fd) {
-    public UserServiceImpl(UsersDAO ud) {
-    	this.ud = ud;
-       // this.dd = dd;
-        //this.fd = fd;
+    public UserServiceImpl(UsersDAO ud, DrinksDAO dd, FavoritesDAO fd) {
+        //public UserServiceImpl(UsersDAO ud) {
+        this.ud = ud;
+        this.dd = dd;
+        this.fd = fd;
     }
 
-	@Override
-	public Users findUsersById(int id) {
-		
-		return ud.findById(id).get();
-	}
+    @Override
+    public Users findUsersById(int id) {
+        return ud.findById(id).get();
+    }
 
-	@Override
-	public Users registerUser(Users u) {
-		
-		return ud.saveAndFlush(u);
-	}
+    @Override
+    public Users registerUser(Users u) {
 
-	/*
+        return ud.saveAndFlush(u);
+    }
+
+/*
 	@Override
 	public List<Drinks> findAllFavoriteDrinks(int userId) {
 		List<Drinks> dList = new ArrayList<>();
@@ -49,21 +48,19 @@ public class UserServiceImpl implements UserService{
 			dList.add(dd.getOne(dListId.get(i)));
 		}
 		return dList;
+	}
+ */
+
+
+    @Override
+    public Users findUsersByUsernameAndPassword(String username, String password) {
+        return ud.findByUsernameAndPassword(username, password);
     }
 
-	 */
 
+    @Override
+    public List<Users> findAllUsers() {
 
-	@Override
-	public Users findUsersByUsernameAndPassword(String username, String password) {
-		return ud.findByUsernameAndPassword(username, password);
-	}
-
-
-
-	@Override
-	public List<Users> findAllUsers() {
-		
-		return ud.findAll();
-	}
+        return ud.findAll();
+    }
 }
