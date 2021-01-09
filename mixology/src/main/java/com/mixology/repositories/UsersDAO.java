@@ -1,0 +1,14 @@
+package com.mixology.repositories;
+
+import org.apache.catalina.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.mixology.models.Users;
+
+
+public interface UsersDAO extends JpaRepository<Users, Integer>{
+	
+	public Users findByUsernameAndPassword(String username, String password);
+
+	public Users findUsersByName(String name);
+}

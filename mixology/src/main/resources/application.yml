@@ -1,0 +1,60 @@
+server:
+  port: 8080
+  
+---
+spring:
+  profiles:
+    active:
+    - ${SPRING_PROFILE} # or ${SPRING_PROFILE:dev} for a default profile
+
+---
+
+
+spring:
+  profiles: dev
+  
+  application:
+    name: DunderMifflinPaperCompanyApplication
+    
+  datasource:
+    driverClassName: org.postgresql.Driver
+    initialization-mode: NEVER
+    password: ${DB_PASS}
+    username: ${DB_USERNAME}
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true # wont do anything if false
+    hibernate:
+      ddl-auto: validate #or VALIDATE or CREATE
+    properties:
+      hibernate:
+        default_schema: ${DB_SCHEMA}
+    show-sql: true
+  
+---
+
+spring:
+  profiles: prod
+  
+  application:
+    name: DunderMifflinPaperCompanyApplication
+    
+  datasource:
+    driverClassName: org.postgresql.Driver
+    initialization-mode: NEVER
+    password: ${DB_PASS}
+    username: ${DB_USERNAME}
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: false # wont do anything if false
+    hibernate:
+      ddl-auto: update #or VALIDATE or CREATE
+    properties:
+      hibernate:
+        default_schema: ${DB_SCHEMA}
+    show-sql: false
+  
