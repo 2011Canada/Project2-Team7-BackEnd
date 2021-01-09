@@ -1,14 +1,12 @@
 package com.mixology.controllers;
 import java.util.List;
+
+import com.mixology.models.Drinks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.*;
 
 import com.mixology.models.Users;
 import com.mixology.services.UserService;
@@ -30,19 +28,19 @@ public class UserController {
 	}
 	
 	
-	@GetMapping("/login") 
-	public ResponseEntity<Users> findUsersByUsernameAndPassword(@PathVariable String username, String password) {
-
+	@GetMapping("/login/{username}/{password}")
+	public ResponseEntity<Users> findUsersByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
 		return new ResponseEntity<Users>(us.findUsersByUsernameAndPassword(username, password), HttpStatus.OK);
-
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Users> findUsersById(@PathVariable int id) {
+		//Users users = us.findUsersById(id);
+		//User user = new User();
+		//user.setFirstname(users.get);
 
-		return new ResponseEntity<Users>(us.findUsersById(id), HttpStatus.OK);
-
-
+		ResponseEntity result = new ResponseEntity<>(us.findUsersById(id), HttpStatus.OK);
+		return  result;
 	}
 	
 	@PostMapping
@@ -50,11 +48,11 @@ public class UserController {
 		
 		return new ResponseEntity<Users>(us.registerUser(u), HttpStatus.CREATED);
 	}
-	
-	/*
-	 * 
-	 * To do : add findAllFavoriteDrinks
-	 * 
-	 */
 
+	/*
+	@GetMapping("/favoriteDrinks/{userId}")
+	public ResponseEntity<List<Drinks>> findAllFavoriteDrinks(@PathVariable int userId){
+		return new ResponseEntity<List<Drinks>>(us.findAllFavoriteDrinks(userId),HttpStatus.OK);
+	}
+	 */
 }

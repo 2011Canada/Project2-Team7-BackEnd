@@ -16,7 +16,7 @@ public interface UserService {
     
     public Users registerUser(Users u);
     
-    public List<Drinks> findAllFavoriteDrinks(int userId);
+    //public List<Drinks> findAllFavoriteDrinks(int userId);
     
 //    public Users findUsersByUsername(String username) ;
 //  

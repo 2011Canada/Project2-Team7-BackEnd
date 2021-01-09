@@ -11,8 +11,6 @@ public class MixologyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MixologyApplication.class, args);
-		
-		
 	}
 
 }
