@@ -1,8 +1,5 @@
 package com.mixology.controllers;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +14,7 @@ import com.mixology.models.Users;
 import com.mixology.services.UserService;
 
 @RestController 
-				
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
 
 	private UserService us;
@@ -28,17 +24,24 @@ public class UserController {
 		this.us = us;
 	}
 
-	@GetMapping("/user/login") // curly braces denote it as a path variable -> when can extract the data
+	@GetMapping
+	public ResponseEntity<List<Users>> getAllUsers(){
+		return new ResponseEntity<List<Users>>(us.findAllUsers(), HttpStatus.OK);
+	}
+	
+	
+	@GetMapping("/login") 
 	public ResponseEntity<Users> findUsersByUsernameAndPassword(@PathVariable String username, String password) {
 
 		return new ResponseEntity<Users>(us.findUsersByUsernameAndPassword(username, password), HttpStatus.OK);
 
 	}
 	
-	@GetMapping("/user/{id}") // curly braces denote it as a path variable -> when can extract the data
+	@GetMapping("/{id}")
 	public ResponseEntity<Users> findUsersById(@PathVariable int id) {
 
 		return new ResponseEntity<Users>(us.findUsersById(id), HttpStatus.OK);
+
 
 	}
 	

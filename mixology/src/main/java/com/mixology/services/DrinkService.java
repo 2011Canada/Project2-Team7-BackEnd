@@ -14,11 +14,11 @@ public interface DrinkService {
 
 	    public Drinks saveDrink(Drinks d);
 
-	    public Drinks findByName(String name);
+	    public Drinks findDrinksByName(String name);
 	    
-	    public Users findByCreator(int userId);
+	    public Drinks findByCreator(Users u);
 	    
-	    public Drinks findByDegree(int degree);
+	    public Drinks findDrinksByDegree(int degree);
 	    
 	    public List<Drinks> findDrinksByIngredientName(String ingredientName);
 	    

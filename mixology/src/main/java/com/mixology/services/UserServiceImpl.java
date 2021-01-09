@@ -2,31 +2,25 @@ package com.mixology.services;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.text.html.parser.Element;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
-
 import com.mixology.models.Drinks;
 import com.mixology.models.Users;
-import com.mixology.repositories.DrinksDAO;
-import com.mixology.repositories.FavoritesDAO;
 import com.mixology.repositories.UsersDAO;
 
 @Service
 public class UserServiceImpl implements UserService{
 
-    UsersDAO ud;
-    DrinksDAO dd;
-    FavoritesDAO fd;
+    private UsersDAO ud;
+    //DrinksDAO dd;
+    //FavoritesDAO fd;
 
     @Autowired
-    public UserServiceImpl(UsersDAO ud, DrinksDAO dd, FavoritesDAO fd) {
-        this.ud = ud;
-        this.dd = dd;
-        this.fd = fd;
+    //public UserServiceImpl(UsersDAO ud, DrinksDAO dd, FavoritesDAO fd) {
+    public UserServiceImpl(UsersDAO ud) {
+    	this.ud = ud;
+       // this.dd = dd;
+        //this.fd = fd;
     }
 
 	@Override
@@ -66,5 +60,11 @@ public class UserServiceImpl implements UserService{
 //		return dList;
 //		
 //		}
+	}
+
+	@Override
+	public List<Users> findAllUsers() {
+		
+		return ud.findAll();
 	}
 }

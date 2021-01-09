@@ -8,6 +8,8 @@ import com.mixology.models.Users;
 public interface UserService {
 	
 	   
+	public List<Users> findAllUsers();
+	    
     public Users findUsersByUsernameAndPassword(String username, String password);
     
     public Users findUsersById(int id);
