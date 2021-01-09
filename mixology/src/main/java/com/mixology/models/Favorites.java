@@ -16,17 +16,17 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class Favorites {
 
     @Id
-    @Column(name = "favoriteId")
+    @Column(name = "favoriteid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int favoriteId;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "userId")
+    @JoinColumn(referencedColumnName = "userid")
     @JsonBackReference
     private Users user;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "drinkId")
+    @JoinColumn(referencedColumnName = "drinkid")
     private Drinks drink;
 
 	public Favorites() {

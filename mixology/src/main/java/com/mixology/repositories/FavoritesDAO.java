@@ -9,6 +9,6 @@ import com.mixology.models.Favorites;
 
 public interface FavoritesDAO extends JpaRepository<Favorites, Integer>{
 	
-	public List<Integer> findAllDrinkIdByUserId(int userId); 
+	//public List<Integer> findAllDrinkIdByUserId(int userId); 
 
 }

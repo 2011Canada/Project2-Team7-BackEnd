@@ -20,7 +20,7 @@ public class Reviews {
 	
 	private String description;
 	
-	private int rate;
+	private double rate;
 	
 	
 	@ManyToOne
@@ -36,7 +36,7 @@ public class Reviews {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reviews(int reviewId, String description, int rate, Users author, Drinks drink) {
+	public Reviews(int reviewId, String description, double rate, Users author, Drinks drink) {
 		super();
 		this.reviewId = reviewId;
 		this.description = description;
@@ -61,7 +61,7 @@ public class Reviews {
 		this.description = description;
 	}
 
-	public int getRate() {
+	public double getRate() {
 		return rate;
 	}
 
@@ -92,7 +92,9 @@ public class Reviews {
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((drink == null) ? 0 : drink.hashCode());
-		result = prime * result + rate;
+		long temp;
+		temp = Double.doubleToLongBits(rate);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + reviewId;
 		return result;
 	}
@@ -121,7 +123,7 @@ public class Reviews {
 				return false;
 		} else if (!drink.equals(other.drink))
 			return false;
-		if (rate != other.rate)
+		if (Double.doubleToLongBits(rate) != Double.doubleToLongBits(other.rate))
 			return false;
 		if (reviewId != other.reviewId)
 			return false;

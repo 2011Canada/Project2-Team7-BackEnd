@@ -31,38 +31,40 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public Users findUsersById(int id) {
-		// TODO Auto-generated method stub
+		
 		return ud.getOne(id);
 	}
 
 	@Override
 	public Users registerUser(Users u) {
-		// TODO Auto-generated method stub
+		
 		return ud.saveAndFlush(u);
 	}
 
 	@Override
 	public Users findUsersByUsernameAndPassword(String username, String password) {
-		// TODO Auto-generated method stub
-		return ud.findByUsernameAndPassword(username, password);
+		
+		return new Users();
+		//return ud.findByUsernameAndPassword(username, password);
 	}
 
 	
 	
 	@Override
 	public List<Drinks> findAllFavoriteDrinks(int userId) {
-		// TODO Auto-generated method stub
 		
-		List<Drinks> dList = new ArrayList<>();
-		List<Integer> dListId = new ArrayList<>();
-		fd.findAllDrinkIdByUserId(userId).forEach(dListId::add);
+		return new  ArrayList<>();
 		
-		for(int i = 0; i < dListId.size(); i++) {
-			dList.add(dd.getOne(dListId.get(i)));
-		}
-		
-		return dList;
-		
-		}
-
+//		List<Drinks> dList = new ArrayList<>();
+//		List<Integer> dListId = new ArrayList<>();
+//		fd.findAllDrinkIdByUserId(userId).forEach(dListId::add);
+//		
+//		for(int i = 0; i < dListId.size(); i++) {
+//			dList.add(dd.getOne(dListId.get(i)));
+//		}
+//		
+//		return dList;
+//		
+//		}
+	}
 }
