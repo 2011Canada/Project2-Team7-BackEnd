@@ -12,7 +12,7 @@ public class Users {
 	@Id
 	@Column(name = "userid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int userid;
+	private int id;
 	private String firstname;
 	private String lastname;
 	private String username;
@@ -26,19 +26,19 @@ public class Users {
 	
 	public Users(int userId, String firstName, String lastName, String username, String password) {
 		super();
-		this.userid = userId;
+		this.id = userId;
 		this.firstname = firstName;
 		this.lastname = lastName;
 		this.username = username;
 		this.password = password;
 	}
 
-	public int getUserid() {
-		return userid;
+	public int getId() {
+		return id;
 	}
 
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFirstname() {
@@ -80,7 +80,7 @@ public class Users {
 		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + userid;
+		result = prime * result + id;
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -109,7 +109,7 @@ public class Users {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (userid != other.userid)
+		if (id != other.id)
 			return false;
 		if (username == null) {
 			if (other.username != null)
@@ -121,7 +121,7 @@ public class Users {
 
 	@Override
 	public String toString() {
-		return "Users [userId=" + userid + ", firstName=" + firstname + ", lastName=" + lastname + ", username="
+		return "Users [userId=" + id + ", firstName=" + firstname + ", lastName=" + lastname + ", username="
 				+ username + ", password=" + password + "]";
 	}
 

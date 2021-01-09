@@ -35,25 +35,19 @@ public class UserController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Users> findUsersById(@PathVariable int id) {
-		//Users users = us.findUsersById(id);
-		//User user = new User();
-		//user.setFirstname(users.get);
-
 		ResponseEntity result = new ResponseEntity<>(us.findUsersById(id), HttpStatus.OK);
 		return  result;
 	}
 	
 	@PostMapping
 	public ResponseEntity<Users> registerUser(@RequestBody Users u) {
-		
 		return new ResponseEntity<Users>(us.registerUser(u), HttpStatus.CREATED);
 	}
 
-	/*
 	@GetMapping("/favoriteDrinks/{userId}")
 	public ResponseEntity<List<Drinks>> findAllFavoriteDrinks(@PathVariable int userId){
 		return new ResponseEntity<List<Drinks>>(us.findAllFavoriteDrinks(userId),HttpStatus.OK);
 	}
-	 */
+
 
 }

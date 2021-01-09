@@ -1,8 +1,10 @@
 package com.mixology.services;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mixology.models.Favorites;
 import com.mixology.repositories.DrinksDAO;
 import com.mixology.repositories.FavoritesDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     public UserServiceImpl(UsersDAO ud, DrinksDAO dd, FavoritesDAO fd) {
-        //public UserServiceImpl(UsersDAO ud) {
         this.ud = ud;
         this.dd = dd;
         this.fd = fd;
@@ -37,26 +38,28 @@ public class UserServiceImpl implements UserService {
         return ud.saveAndFlush(u);
     }
 
-/*
+
 	@Override
 	public List<Drinks> findAllFavoriteDrinks(int userId) {
 		List<Drinks> dList = new ArrayList<>();
 		List<Integer> dListId = new ArrayList<>();
-		fd.findAllDrinkIdByUserId(userId).forEach(dListId::add);
+		//fd.findByUserId(userId).forEach(dListId::add);
+        List<Favorites> fList = fd.findByUserId(userId);
+
+        for(int i =0;i< fList.size();i++){
+            dListId.add(fList.get(i).getUser().getId());
+        }
 
 		for(int i = 0; i < dListId.size(); i++) {
 			dList.add(dd.getOne(dListId.get(i)));
 		}
 		return dList;
 	}
- */
-
 
     @Override
     public Users findUsersByUsernameAndPassword(String username, String password) {
         return ud.findByUsernameAndPassword(username, password);
     }
-
 
     @Override
     public List<Users> findAllUsers() {

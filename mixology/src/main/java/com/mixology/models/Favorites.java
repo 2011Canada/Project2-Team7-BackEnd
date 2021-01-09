@@ -11,9 +11,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name ="favorites")
-public class Favorites {
+public class Favorites implements Serializable {
 
     @Id
     @Column(name = "favoriteid")
@@ -21,12 +23,12 @@ public class Favorites {
     private int favoriteId;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "userid")
+    @JoinColumn(name = "userid")
     @JsonBackReference
     private Users user;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "drinkid")
+    @JoinColumn(name = "drinkid")
     private Drinks drink;
 
 	public Favorites() {
