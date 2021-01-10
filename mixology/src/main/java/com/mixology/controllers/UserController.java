@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import com.mixology.models.Users;
 import com.mixology.services.UserService;
 
+
 @RestController 
 @RequestMapping("/user")
 public class UserController {
@@ -28,7 +29,8 @@ public class UserController {
 		return new ResponseEntity<List<Users>>(us.findAllUsers(), HttpStatus.OK);
 	}
 
-	@GetMapping("/login/{username}/{password}")
+
+	@PostMapping("/login/{username}/{password}") 
 	public ResponseEntity<Users> findUsersByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
 		return new ResponseEntity<Users>(us.findUsersByUsernameAndPassword(username, password), HttpStatus.OK);
 	}
