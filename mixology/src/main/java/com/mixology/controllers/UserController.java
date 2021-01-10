@@ -2,6 +2,7 @@ package com.mixology.controllers;
 import java.util.List;
 
 import com.mixology.models.Drinks;
+import com.mixology.models.Favorites;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,5 +49,8 @@ public class UserController {
 		return new ResponseEntity<List<Drinks>>(us.findAllFavoriteDrinks(userId),HttpStatus.OK);
 	}
 
-
+	@PostMapping("/addFavorite")
+	public ResponseEntity<Favorites> saveFavouriteDrink(@RequestBody Favorites favorites) {
+		return new ResponseEntity<Favorites>(us.addFavoriteDrink(favorites), HttpStatus.CREATED);
+	}
 }

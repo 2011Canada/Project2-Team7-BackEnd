@@ -18,7 +18,7 @@ public class Drinks {
 	@Id
 	@Column(name ="drinkid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int drinkId;
+	private int id;
 	
 	@Column(name ="drinkname")
 	private String name;
@@ -35,20 +35,20 @@ public class Drinks {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Drinks(int drinkId, String name, int degree, Users drinkCreator) {
+	public Drinks(int id, String name, int degree, Users drinkCreator) {
 		super();
-		this.drinkId = drinkId;
+		this.id = id;
 		this.name = name;
 		this.degree = degree;
 		this.drinkCreator = drinkCreator;
 	}
 
-	public int getDrinkId() {
-		return drinkId;
+	public int getId() {
+		return id;
 	}
 
-	public void setDrinkId(int drinkId) {
-		this.drinkId = drinkId;
+	public void setId(int drinkId) {
+		this.id = drinkId;
 	}
 
 	public String getName() {
@@ -81,7 +81,7 @@ public class Drinks {
 		int result = 1;
 		result = prime * result + degree;
 		result = prime * result + ((drinkCreator == null) ? 0 : drinkCreator.hashCode());
-		result = prime * result + drinkId;
+		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -102,7 +102,7 @@ public class Drinks {
 				return false;
 		} else if (!drinkCreator.equals(other.drinkCreator))
 			return false;
-		if (drinkId != other.drinkId)
+		if (id != other.id)
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -114,7 +114,7 @@ public class Drinks {
 
 	@Override
 	public String toString() {
-		return "Drinks [drinkId=" + drinkId + ", name=" + name + ", degree=" + degree + ", drinkCreator=" + drinkCreator
+		return "Drinks [drinkId=" + id + ", name=" + name + ", degree=" + degree + ", drinkCreator=" + drinkCreator
 				+ "]";
 	}
 

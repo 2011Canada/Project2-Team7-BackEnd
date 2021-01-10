@@ -56,13 +56,19 @@ public class UserServiceImpl implements UserService {
 	}
 
     @Override
+    public Favorites addFavoriteDrink(Favorites favorites) {
+        return fd.saveAndFlush(favorites);
+    }
+
+    @Override
     public Users findUsersByUsernameAndPassword(String username, String password) {
         return ud.findByUsernameAndPassword(username, password);
     }
 
     @Override
     public List<Users> findAllUsers() {
-
         return ud.findAll();
     }
+
+
 }

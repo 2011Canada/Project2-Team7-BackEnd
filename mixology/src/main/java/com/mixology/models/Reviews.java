@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name ="reviews")
@@ -16,11 +17,11 @@ public class Reviews {
 	@Id
 	@Column(name ="reviewid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int reviewId;
+	private int id;
 	
 	private String description;
 	
-	private double rate;
+	private int rate;
 	
 	
 	@ManyToOne
@@ -36,21 +37,21 @@ public class Reviews {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reviews(int reviewId, String description, double rate, Users author, Drinks drink) {
+	public Reviews(int id, String description, int rate, Users author, Drinks drink) {
 		super();
-		this.reviewId = reviewId;
+		this.id = id;
 		this.description = description;
 		this.rate = rate;
 		this.author = author;
 		this.drink = drink;
 	}
 
-	public int getReviewId() {
-		return reviewId;
+	public int getId() {
+		return id;
 	}
 
-	public void setReviewId(int reviewId) {
-		this.reviewId = reviewId;
+	public void setId(int reviewId) {
+		this.id = reviewId;
 	}
 
 	public String getDescription() {
@@ -61,7 +62,7 @@ public class Reviews {
 		this.description = description;
 	}
 
-	public double getRate() {
+	public int getRate() {
 		return rate;
 	}
 
@@ -77,6 +78,23 @@ public class Reviews {
 		this.author = author;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Reviews reviews = (Reviews) o;
+		return id == reviews.id &&
+				rate == reviews.rate &&
+				description.equals(reviews.description) &&
+				author.equals(reviews.author) &&
+				drink.equals(reviews.drink);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, description, rate, author, drink);
+	}
+
 	public Drinks getDrink() {
 		return drink;
 	}
@@ -85,54 +103,10 @@ public class Reviews {
 		this.drink = drink;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((author == null) ? 0 : author.hashCode());
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((drink == null) ? 0 : drink.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(rate);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + reviewId;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Reviews other = (Reviews) obj;
-		if (author == null) {
-			if (other.author != null)
-				return false;
-		} else if (!author.equals(other.author))
-			return false;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (drink == null) {
-			if (other.drink != null)
-				return false;
-		} else if (!drink.equals(other.drink))
-			return false;
-		if (Double.doubleToLongBits(rate) != Double.doubleToLongBits(other.rate))
-			return false;
-		if (reviewId != other.reviewId)
-			return false;
-		return true;
-	}
 
 	@Override
 	public String toString() {
-		return "Reviews [reviewId=" + reviewId + ", description=" + description + ", rate=" + rate + ", author="
+		return "Reviews [reviewId=" + id + ", description=" + description + ", rate=" + rate + ", author="
 				+ author + ", drink=" + drink + "]";
 	}
 

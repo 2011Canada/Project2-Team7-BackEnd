@@ -3,6 +3,7 @@ package com.mixology.services;
 import java.util.List;
 
 import com.mixology.models.Drinks;
+import com.mixology.models.Favorites;
 import com.mixology.models.Users;
 
 public interface UserService {
@@ -17,6 +18,8 @@ public interface UserService {
     public Users registerUser(Users u);
     
     public List<Drinks> findAllFavoriteDrinks(int userId);
+
+    public Favorites addFavoriteDrink(Favorites favorites);
     
 //    public Users findUsersByUsername(String username) ;
 //  
