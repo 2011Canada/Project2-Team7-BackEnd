@@ -38,6 +38,7 @@ public class DrinkServiceImpl implements DrinkService{
 
 	@Override
 	public List<Drinks> findByCreator(Users u) {
+
 		return dd.findDrinksByDrinkCreator(u);
 	}
 

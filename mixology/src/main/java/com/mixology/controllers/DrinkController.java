@@ -41,10 +41,8 @@ public class DrinkController {
     @GetMapping("/drinkName/{name}")
     public ResponseEntity<Drinks> findDrinksByName(@PathVariable String name){
         return new ResponseEntity<Drinks>(drinkService.findDrinksByName(name), HttpStatus.OK);
-
     }
 
-    //  ---- to do
     @GetMapping("/creator/{id}")
     public ResponseEntity<List<Drinks>> findByCreator(Users u){
         return new ResponseEntity<List<Drinks>>(drinkService.findByCreator(u), HttpStatus.OK);
