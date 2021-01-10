@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Ingredients {
@@ -12,7 +13,7 @@ public class Ingredients {
     @Id
     @Column(name= "ingid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ingredientId;
+    private int id;
     
     @Column(name ="ingname")
     private String name;
@@ -26,19 +27,11 @@ public class Ingredients {
 
     public Ingredients(int ingredientId, String name) {
         super();
-        this.ingredientId = ingredientId;
+        this.id = ingredientId;
         this.name = name;
     }
 
 
-    public int getIngredientId() {
-        return ingredientId;
-    }
-
-
-    public void setIngredientId(int ingredientId) {
-        this.ingredientId = ingredientId;
-    }
 
 
     public String getName() {
@@ -50,40 +43,31 @@ public class Ingredients {
         this.name = name;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ingredients that = (Ingredients) o;
+        return id == that.id &&
+                Objects.equals(name, that.name);
+    }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ingredientId;
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        return result;
+        return Objects.hash(id, name);
     }
-
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Ingredients other = (Ingredients) obj;
-        if (ingredientId != other.ingredientId)
-            return false;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        return true;
-    }
-
 
     @Override
     public String toString() {
-        return "Ingredients [ingredientId=" + ingredientId + ", name=" + name + "]";
+        return "Ingredients [ingredientId=" + id + ", name=" + name + "]";
     }
     
     

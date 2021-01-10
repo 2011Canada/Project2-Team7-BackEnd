@@ -1,6 +1,7 @@
 package com.mixology.controllers;
 
 import com.mixology.models.Drinks;
+import com.mixology.models.Recipes;
 import com.mixology.models.Users;
 import com.mixology.services.DrinkService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,6 @@ public class DrinkController {
 
     }
 
-     // -- check the functionality
     @PostMapping
     public ResponseEntity<Drinks> saveDrink(@RequestBody Drinks d){
         return new ResponseEntity<Drinks>(drinkService.saveDrink(d), HttpStatus.OK);
@@ -54,11 +54,8 @@ public class DrinkController {
 
     }
 
-    // --- to do
     @GetMapping("/ingredientName/{ingredientName}")
     public ResponseEntity<List<Drinks>> findDrinksByIngredientName(@PathVariable String ingredientName){
         return new ResponseEntity<List<Drinks>>(drinkService.findDrinksByIngredientName(ingredientName), HttpStatus.OK);
-
     }
-
 }

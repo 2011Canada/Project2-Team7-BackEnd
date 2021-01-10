@@ -43,7 +43,6 @@ public class UserServiceImpl implements UserService {
 	public List<Drinks> findAllFavoriteDrinks(int userId) {
 		List<Drinks> dList = new ArrayList<>();
 		List<Integer> dListId = new ArrayList<>();
-		//fd.findByUserId(userId).forEach(dListId::add);
         List<Favorites> fList = fd.findByUserId(userId);
 
         for(int i =0;i< fList.size();i++){

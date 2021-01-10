@@ -1,9 +1,12 @@
 package com.mixology.repositories;
 
+import com.mixology.models.Ingredients;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.mixology.models.Recipes;
 
-public interface RecipesDAO extends JpaRepository<Recipes, Integer>{
+import java.util.List;
 
+public interface RecipesDAO extends JpaRepository<Recipes, Ingredients>{
+    public List<Recipes> findRecipesByIngredientId(int ingredientId);
 }

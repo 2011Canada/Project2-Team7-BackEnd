@@ -6,4 +6,5 @@ import com.mixology.models.Ingredients;
 
 public interface IngredientsDAO extends JpaRepository<Ingredients, Integer>{
 
+    public Ingredients getIngredientsByName(String name);
 }
