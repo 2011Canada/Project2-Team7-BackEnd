@@ -9,6 +9,7 @@ import com.mixology.repositories.RecipesDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mixology.models.Drinks;
+import com.mixology.models.Ingredients;
 import com.mixology.models.Users;
 import com.mixology.repositories.DrinksDAO;
 
@@ -69,6 +70,19 @@ public class DrinkServiceImpl implements DrinkService {
             drinks.add(recipes.get(i).getDrink());
         }
         return drinks;
+    }
+    
+    @Override
+    public List<Ingredients> findIngredientsByDrinkId(int drinkId){
+    	List<Recipes> recipes = new ArrayList<>();
+        List<Ingredients> ingredients = new ArrayList<>();
+
+        recipesDAO.findRecipesByDrinkId(drinkId).forEach(recipes::add);
+
+        for (int i = 0; i < recipes.size(); i++) {
+        	ingredients.add(recipes.get(i).getIngredient());
+        }
+        return ingredients;
     }
 
 }

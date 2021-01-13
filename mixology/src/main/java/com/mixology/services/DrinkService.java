@@ -3,6 +3,7 @@ package com.mixology.services;
 import java.util.List;
 
 import com.mixology.models.Drinks;
+import com.mixology.models.Ingredients;
 import com.mixology.models.Users;
 
 public interface DrinkService {
@@ -21,5 +22,7 @@ public interface DrinkService {
 	  public List<Drinks> findDrinksByDegree(int degree);
 	    
 	  public List<Drinks> findDrinksByIngredientName(String ingredientName);
+	  
+	  public List<Ingredients> findIngredientsByDrinkId(int drinkId);
 	    
 }

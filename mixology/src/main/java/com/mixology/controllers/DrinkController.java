@@ -1,6 +1,7 @@
 package com.mixology.controllers;
 
 import com.mixology.models.Drinks;
+import com.mixology.models.Ingredients;
 import com.mixology.models.Recipes;
 import com.mixology.models.Users;
 import com.mixology.services.DrinkService;
@@ -57,5 +58,10 @@ public class DrinkController {
     @GetMapping("/ingredientName/{ingredientName}")
     public ResponseEntity<List<Drinks>> findDrinksByIngredientName(@PathVariable String ingredientName){
         return new ResponseEntity<List<Drinks>>(drinkService.findDrinksByIngredientName(ingredientName), HttpStatus.OK);
+    }
+    
+    @GetMapping("/ingredients/{drinkId}")
+    public ResponseEntity<List<Ingredients>> findIngredientsByDrinkId(@PathVariable int drinkId){
+        return new ResponseEntity<List<Ingredients>>(drinkService.findIngredientsByDrinkId(drinkId), HttpStatus.OK);
     }
 }

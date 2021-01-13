@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface RecipesDAO extends JpaRepository<Recipes, Ingredients>{
     public List<Recipes> findRecipesByIngredientId(int ingredientId);
+    public List<Recipes> findRecipesByDrinkId(int drinkId);
 }
