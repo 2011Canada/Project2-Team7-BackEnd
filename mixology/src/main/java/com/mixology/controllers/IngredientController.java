@@ -34,17 +34,17 @@ public class IngredientController {
         return new ResponseEntity<List<Ingredients>>(is.findIngredientsByDrinkId(drinkId), HttpStatus.OK);
     }
  
-//    @PostMapping
-//    public ResponseEntity<Drinks> saveDrink(@RequestBody Drinks d){
-//        return new ResponseEntity<Drinks>(drinkService.saveDrink(d), HttpStatus.OK);
+    @PostMapping
+    public ResponseEntity<Ingredients> saveIngredient(@RequestBody Ingredients i){
+        return new ResponseEntity<Ingredients>(is.saveIngredient(i), HttpStatus.OK);
+    }
+    
+//    @PostMapping("{drinkId}/{ingredientId}")
+//    public ResponseEntity<Recipes> saveRecipe(@PathVariable int drinkId){
+//        return new ResponseEntity<Recipes>(drinkService.saveDrink(d), HttpStatus.OK);
 //    }
 //    
-//    @PostMapping
-//    public ResponseEntity<Drinks> saveDrink(@RequestBody Drinks d){
-//        return new ResponseEntity<Drinks>(drinkService.saveDrink(d), HttpStatus.OK);
-//    }
-    
-   
+//   
 
     
 }
