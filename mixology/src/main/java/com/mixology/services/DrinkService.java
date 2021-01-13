@@ -23,6 +23,6 @@ public interface DrinkService {
 	    
 	  public List<Drinks> findDrinksByIngredientName(String ingredientName);
 	  
-	  public List<Ingredients> findIngredientsByDrinkId(int drinkId);
+	 
 	    
 }

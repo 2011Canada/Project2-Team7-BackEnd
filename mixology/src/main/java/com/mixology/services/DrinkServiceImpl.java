@@ -72,17 +72,6 @@ public class DrinkServiceImpl implements DrinkService {
         return drinks;
     }
     
-    @Override
-    public List<Ingredients> findIngredientsByDrinkId(int drinkId){
-    	List<Recipes> recipes = new ArrayList<>();
-        List<Ingredients> ingredients = new ArrayList<>();
-
-        recipesDAO.findRecipesByDrinkId(drinkId).forEach(recipes::add);
-
-        for (int i = 0; i < recipes.size(); i++) {
-        	ingredients.add(recipes.get(i).getIngredient());
-        }
-        return ingredients;
-    }
+  
 
 }

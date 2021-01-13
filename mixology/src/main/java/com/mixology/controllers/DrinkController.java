@@ -1,8 +1,6 @@
 package com.mixology.controllers;
 
 import com.mixology.models.Drinks;
-import com.mixology.models.Ingredients;
-import com.mixology.models.Recipes;
 import com.mixology.models.Users;
 import com.mixology.services.DrinkService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,8 +58,4 @@ public class DrinkController {
         return new ResponseEntity<List<Drinks>>(drinkService.findDrinksByIngredientName(ingredientName), HttpStatus.OK);
     }
     
-    @GetMapping("/ingredients/{drinkId}")
-    public ResponseEntity<List<Ingredients>> findIngredientsByDrinkId(@PathVariable int drinkId){
-        return new ResponseEntity<List<Ingredients>>(drinkService.findIngredientsByDrinkId(drinkId), HttpStatus.OK);
-    }
 }
