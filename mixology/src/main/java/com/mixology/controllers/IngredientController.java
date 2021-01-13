@@ -39,12 +39,9 @@ public class IngredientController {
         return new ResponseEntity<Ingredients>(is.saveIngredient(i), HttpStatus.OK);
     }
     
-//    @PostMapping("{drinkId}/{ingredientId}")
-//    public ResponseEntity<Recipes> saveRecipe(@PathVariable int drinkId){
-//        return new ResponseEntity<Recipes>(drinkService.saveDrink(d), HttpStatus.OK);
-//    }
-//    
-//   
-
-    
+    @PostMapping("/recipe")
+    public ResponseEntity<Recipes> saveRecipe(@RequestBody Recipes r){
+        return new ResponseEntity<Recipes>(is.saveRecipe(r), HttpStatus.OK);
+    }
+        
 }
