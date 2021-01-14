@@ -45,10 +45,11 @@ public class UserServiceImpl implements UserService {
 		List<Integer> dListId = new ArrayList<>();
         List<Favorites> fList = fd.findByUserId(userId);
 
+        //System.out.println("fList: " + fList);
         for(int i =0;i< fList.size();i++){
-            dListId.add(fList.get(i).getUser().getId());
+            dListId.add(fList.get(i).getDrink().getId());
         }
-
+       // System.out.println("dListId: " + dListId);
 		for(int i = 0; i < dListId.size(); i++) {
 			dList.add(dd.getOne(dListId.get(i)));
 		}
