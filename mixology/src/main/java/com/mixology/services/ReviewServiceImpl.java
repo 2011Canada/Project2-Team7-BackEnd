@@ -21,8 +21,17 @@ public class ReviewServiceImpl implements ReviewService{
 	
 	@Override
 	public Reviews addReview(Reviews r) {
-		return rd.saveAndFlush(r);
+		rd.save(r); 
+    	updateReview(r.getAuthor().getId(), r.getDrink().getId(), r.getId());
+    	rd.flush();
+    	
+    	return r;
 	}
+	
+	public void updateReview( int userId, int drinkId, int reviewId) {
+    	rd.updateReviews(userId, drinkId, reviewId);
+    }
+    
 
 	@Override
 	public List<Reviews> findReviewsByDrinkId(int drinkId) {

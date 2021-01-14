@@ -56,10 +56,19 @@ public class UserServiceImpl implements UserService {
 	}
 
     @Override
-    public Favorites addFavoriteDrink(Favorites favorites) {
-        return fd.saveAndFlush(favorites);
+    public Favorites addFavoriteDrink(Favorites f) {
+    	fd.save(f);
+    	int favId = f.getFavoriteId();
+    	updateFavorite(f.getDrink().getId(), f.getUser().getId(), favId);
+    	fd.flush();
+    	return f;
     }
 
+    public void updateFavorite(int drinkId, int userId, int favId) {
+    	//System.out.println("user: " + userId + " drinkId: " + drinkId);
+    	fd.updateFavorites(drinkId, userId, favId);
+    }
+    
     @Override
     public Users findUsersByUsernameAndPassword(String username, String password) {
         return ud.findByUsernameAndPassword(username, password);

@@ -39,9 +39,19 @@ public class DrinkServiceImpl implements DrinkService {
 
     @Override
     public Drinks saveDrink(Drinks d) {
-        return dd.saveAndFlush(d);
+    	dd.save(d); 
+    	int userId = d.getDrinkCreator().getId();
+    	updateDrinkCreator(userId, d.getId());
+    	dd.flush();
+    	//return dd.saveAndFlush(d);
+    	return d;
     }
 
+    public void updateDrinkCreator(int userId, int drinkId) {
+    	//System.out.println("user: " + userId + " drinkId: " + drinkId);
+    	dd.updateDrinkCreator(userId, drinkId);
+    }
+    
     @Override
     public Drinks findDrinksByName(String name) {
         return dd.findDrinksByName(name);
