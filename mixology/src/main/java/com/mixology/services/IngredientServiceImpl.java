@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.mixology.models.Drinks;
@@ -36,7 +37,6 @@ public class IngredientServiceImpl implements IngredientService{
 	        List<Ingredients> ingredients = new ArrayList<>();
 
 	        recipesDAO.findRecipesByDrinkId(drinkId).forEach(recipes::add);
-
 	        for (int i = 0; i < recipes.size(); i++) {
 	        	ingredients.add(recipes.get(i).getIngredient());
 	        }
@@ -45,12 +45,38 @@ public class IngredientServiceImpl implements IngredientService{
 	   
 	    @Override
 	    public Recipes saveRecipe(Recipes r) {
-	        return recipesDAO.saveAndFlush(r);
+	    	
+	        //return recipesDAO.saveAndFlush(r);
+	    	
+	        Recipes rObj = recipesDAO.save(r);
+	        int drinkId = rObj.getDrink().getId();
+	        int ingId = rObj.getIngredient().getId();
+	        updateRecipes(drinkId, ingId, drinkId, ingId);
+	        //System.out.println("drinkId = " + drinkId);
+	        //System.out.println("ingId = " + ingId);
+	        int recipeId = findRecipeId(drinkId, ingId);
+	        //System.out.println("recipeId = " + recipeId);
+	        
+	        recipesDAO.flush();
+	       
+	        return rObj;
+	        
+	        
+	       
 	    }
+	    public int findRecipeId(int drinkid, int ingid) {
+	    	System.out.println("findRecipeId");
+	    	return recipesDAO.findRecipeIdByDrinkIdAndIngId(drinkid, ingid);
+        }
+	    
+	    public void updateRecipes(int drinkid, int ingid, int drink_id, int ing_id) {
+	    	recipesDAO.updateRecipes(drinkid, ingid, drink_id, ing_id);
+        }
 	    
 	    @Override
 	    public Ingredients saveIngredient(Ingredients i) {
 	        return ingredientsDAO.saveAndFlush(i);
 	    }
 	    
+	   
 }

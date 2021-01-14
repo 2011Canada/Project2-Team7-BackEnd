@@ -2,7 +2,6 @@ package com.mixology.services;
 
 import java.util.List;
 
-import com.mixology.models.Drinks;
 import com.mixology.models.Ingredients;
 import com.mixology.models.Recipes;
 
@@ -15,4 +14,10 @@ public interface IngredientService {
 	 public Recipes saveRecipe(Recipes r);
 	 
 	 public Ingredients saveIngredient(Ingredients i);
+	 
+	 public int findRecipeId(int drinkid, int ingid);
+	 
+	 public void updateRecipes(int drinkid, int ingid, int drink_id, int ing_id);
 }
+
+

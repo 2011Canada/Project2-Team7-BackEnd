@@ -33,7 +33,7 @@ public class IngredientController {
     public ResponseEntity<List<Ingredients>> findIngredientsByDrinkId(@PathVariable int drinkId){
         return new ResponseEntity<List<Ingredients>>(is.findIngredientsByDrinkId(drinkId), HttpStatus.OK);
     }
- 
+    
     @PostMapping
     public ResponseEntity<Ingredients> saveIngredient(@RequestBody Ingredients i){
         return new ResponseEntity<Ingredients>(is.saveIngredient(i), HttpStatus.OK);
@@ -42,6 +42,17 @@ public class IngredientController {
     @PostMapping("/recipe")
     public ResponseEntity<Recipes> saveRecipe(@RequestBody Recipes r){
         return new ResponseEntity<Recipes>(is.saveRecipe(r), HttpStatus.OK);
+    }
+     
+    @PostMapping("/recipe/{drinkid}/{ingid}")
+    public void saveRecipeAllColumns(@PathVariable int drinkid, @PathVariable int ingid){
+        is.updateRecipes(drinkid, ingid, drinkid, ingid);
+    }
+    
+    
+    @GetMapping("/recipe/{drinkid}/{ingid}")
+    public void getRecipeIdByDrinkIdAndIngId(@PathVariable int drinkid, @PathVariable int ingid){
+        is.findRecipeId(drinkid, ingid);
     }
         
 }
