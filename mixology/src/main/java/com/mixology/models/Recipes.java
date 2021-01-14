@@ -16,20 +16,19 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Recipes {
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private int recipeId;
+	    private int recipeid;
 
 	    @ManyToOne
-	    @JoinColumn(referencedColumnName = "drinkId")
+	    @JoinColumn(referencedColumnName = "drinkid")
 	    @JsonBackReference
 	    private Drinks drink;
 
 	    @ManyToOne
-	    @JoinColumn(referencedColumnName = "ingId")
+	    @JoinColumn(referencedColumnName = "ingid")
 	    private Ingredients ingredient;
 
 		public Recipes() {
 			super();
-			// TODO Auto-generated constructor stub
 		}
 
 		@Override
@@ -38,7 +37,7 @@ public class Recipes {
 			int result = 1;
 			result = prime * result + ((drink == null) ? 0 : drink.hashCode());
 			result = prime * result + ((ingredient == null) ? 0 : ingredient.hashCode());
-			result = prime * result + recipeId;
+			result = prime * result + recipeid;
 			return result;
 		}
 
@@ -61,24 +60,24 @@ public class Recipes {
 					return false;
 			} else if (!ingredient.equals(other.ingredient))
 				return false;
-			if (recipeId != other.recipeId)
+			if (recipeid != other.recipeid)
 				return false;
 			return true;
 		}
 
 		public Recipes(int recipeId, Drinks drink, Ingredients ingredient) {
 			super();
-			this.recipeId = recipeId;
+			this.recipeid = recipeId;
 			this.drink = drink;
 			this.ingredient = ingredient;
 		}
 
 		public int getRecipeId() {
-			return recipeId;
+			return recipeid;
 		}
 
 		public void setRecipeId(int recipeId) {
-			this.recipeId = recipeId;
+			this.recipeid = recipeId;
 		}
 
 		public Drinks getDrink() {
@@ -99,7 +98,7 @@ public class Recipes {
 
 		@Override
 		public String toString() {
-			return "Recipes [recipeId=" + recipeId + ", drink=" + drink + ", ingredient=" + ingredient + "]";
+			return "Recipes [recipeId=" + recipeid + ", drink=" + drink + ", ingredient=" + ingredient + "]";
 		}
 	
 

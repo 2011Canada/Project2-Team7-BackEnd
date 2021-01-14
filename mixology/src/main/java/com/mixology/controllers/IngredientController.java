@@ -44,15 +44,14 @@ public class IngredientController {
         return new ResponseEntity<Recipes>(is.saveRecipe(r), HttpStatus.OK);
     }
      
-    @PostMapping("/recipe/{drinkid}/{ingid}")
-    public void saveRecipeAllColumns(@PathVariable int drinkid, @PathVariable int ingid){
-        is.updateRecipes(drinkid, ingid, drinkid, ingid);
-    }
-    
-    
-    @GetMapping("/recipe/{drinkid}/{ingid}")
-    public void getRecipeIdByDrinkIdAndIngId(@PathVariable int drinkid, @PathVariable int ingid){
-        is.findRecipeId(drinkid, ingid);
-    }
+//    @PostMapping("/recipe/{drinkid}/{ingid}")
+//    public void saveRecipeAllColumns(@PathVariable int drinkid, @PathVariable int ingid){
+//        is.updateRecipes(drinkid, ingid);
+//    }
+//    
+//    @GetMapping("/recipe/{drinkid}/{ingid}")
+//    public Recipes getRecipeIdByDrinkIdAndIngId(@PathVariable int drinkid, @PathVariable int ingid){
+//        return is.findRecipeById(drinkid, ingid);
+//    }
         
 }

@@ -18,9 +18,10 @@ public interface RecipesDAO extends JpaRepository<Recipes, Ingredients>{
   
     @Transactional
     @Modifying(clearAutomatically = true)
-    @Query("update Recipes set drinkid = :drinkid, ingid = :ingid where drink_drinkid = :drink_id and ingredient_ingid = :ing_id")
-    public void updateRecipes(@Param(value = "drinkid") int drinkid, @Param(value = "ingid") int ingid, @Param(value = "drink_id") int drink_id, @Param(value = "ing_id") int ing_id);
+    @Query("update Recipes set drinkid = :drinkid, ingid = :ingid, recipe_id = :recipeid where drink_drinkid = :drink_id and ingredient_ingid = :ing_id")
+    public void updateRecipes(@Param(value = "drinkid") int drinkid, @Param(value = "ingid") int ingid, @Param(value = "recipeid") int recipeid, @Param(value = "drink_id") int drink_id, @Param(value = "ing_id") int ing_id);
 
-    @Query(value = "select recipeid from Recipes where drink_drinkid = :drinkid and ingredient_ingid = :ingid", nativeQuery =true)
-    public int findRecipeIdByDrinkIdAndIngId(@Param(value = "drinkid") int drinkid, @Param(value = "ingid") int ingid);
+    @Transactional
+    @Query("from Recipes where drink_drinkid = :drinkid and ingredient_ingid = :ingid")
+    public Recipes findRecipeIdByDrinkIdAndIngId(@Param(value = "drinkid") int drinkid, @Param(value = "ingid") int ingid);
 }

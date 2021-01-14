@@ -15,9 +15,9 @@ public interface IngredientService {
 	 
 	 public Ingredients saveIngredient(Ingredients i);
 	 
-	 public int findRecipeId(int drinkid, int ingid);
+	 public Recipes findRecipeById(int drinkid, int ingid);
 	 
-	 public void updateRecipes(int drinkid, int ingid, int drink_id, int ing_id);
+	 public void updateRecipes(int drinkid, int ingid, int recipeid);
 }
 
 

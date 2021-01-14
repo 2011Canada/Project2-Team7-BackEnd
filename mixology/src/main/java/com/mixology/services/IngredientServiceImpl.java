@@ -48,29 +48,25 @@ public class IngredientServiceImpl implements IngredientService{
 	    	
 	        //return recipesDAO.saveAndFlush(r);
 	    	
-	        Recipes rObj = recipesDAO.save(r);
+	        Recipes rObj = recipesDAO.save(r); 
 	        int drinkId = rObj.getDrink().getId();
 	        int ingId = rObj.getIngredient().getId();
-	        updateRecipes(drinkId, ingId, drinkId, ingId);
-	        //System.out.println("drinkId = " + drinkId);
-	        //System.out.println("ingId = " + ingId);
-	        int recipeId = findRecipeId(drinkId, ingId);
-	        //System.out.println("recipeId = " + recipeId);
-	        
+	        Recipes recipe = findRecipeById(drinkId, ingId);
+	        int recipeId= recipe.getRecipeId();
+	        updateRecipes(drinkId, ingId, recipeId);     
 	        recipesDAO.flush();
 	       
-	        return rObj;
-	        
-	        
+	        return rObj;  
 	       
 	    }
-	    public int findRecipeId(int drinkid, int ingid) {
-	    	System.out.println("findRecipeId");
+	    
+	    public Recipes findRecipeById(int drinkid, int ingid) {
+	    	
 	    	return recipesDAO.findRecipeIdByDrinkIdAndIngId(drinkid, ingid);
         }
 	    
-	    public void updateRecipes(int drinkid, int ingid, int drink_id, int ing_id) {
-	    	recipesDAO.updateRecipes(drinkid, ingid, drink_id, ing_id);
+	    public void updateRecipes(int drinkid, int ingid, int recipeId) {
+	    	recipesDAO.updateRecipes(drinkid, ingid, recipeId, drinkid, ingid);
         }
 	    
 	    @Override
