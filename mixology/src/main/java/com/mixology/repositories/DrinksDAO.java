@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 
 public interface DrinksDAO  extends JpaRepository<Drinks, Integer>{
 	
-	public Drinks findDrinksByName(String name);
+	public Drinks findDrinksByNameIgnoreCase(String name);
 	
 	public List<Drinks> findDrinksByDegree(int degree);
 

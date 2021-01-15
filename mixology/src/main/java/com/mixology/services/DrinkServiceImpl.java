@@ -54,7 +54,7 @@ public class DrinkServiceImpl implements DrinkService {
     
     @Override
     public Drinks findDrinksByName(String name) {
-        return dd.findDrinksByName(name);
+        return dd.findDrinksByNameIgnoreCase(name);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class DrinkServiceImpl implements DrinkService {
     public List<Drinks> findDrinksByIngredientName(String ingredientName) {
         List<Recipes> recipes = new ArrayList<>();
         List<Drinks> drinks = new ArrayList<>();
-        int ingredientId = ingredientsDAO.getIngredientsByName(ingredientName).getId();
+        int ingredientId = ingredientsDAO.getIngredientsByNameIgnoreCase(ingredientName).getId();
 
         recipesDAO.findRecipesByIngredientId(ingredientId).forEach(recipes::add);
 
