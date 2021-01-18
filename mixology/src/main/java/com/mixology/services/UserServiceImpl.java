@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
         List<Favorites> fList = fd.findByUserId(userId);
 
         for(int i =0;i< fList.size();i++){
-            dListId.add(fList.get(i).getUser().getId());
+            dListId.add(fList.get(i).getDrink().getId());
         }
 
 		for(int i = 0; i < dListId.size(); i++) {
