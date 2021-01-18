@@ -10,7 +10,7 @@ public class CorsConfig implements WebMvcConfigurer{
     public void addCorsMappings(CorsRegistry registry) {
         // TODO Auto-generated method stub
         registry.addMapping("/**") // all endpoints in the api
-        .allowedOrigins("http://localhost:1234/", "http://localhost:3000") // YOU MIGHT HAVE TO ADD OR CHANGE
+        .allowedOrigins("http://3.134.99.157", "http://localhost:3000") // YOU MIGHT HAVE TO ADD OR CHANGE
         .allowedMethods("PUT", "DELETE", "GET", "OPTIONS", "POST", "PATCH")
         .allowedHeaders("header1", "Content-Type", "Authorization","Access-Control-Allow-Origin")//YOU MIGHT HAVE TO ADD HEADERS
 //        .exposedHeaders("header1", "header2")
