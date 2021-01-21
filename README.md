@@ -1,6 +1,9 @@
 # Project2-Team7-BackEnd
 Project2-BackEnd Using SpringBoot, Hibernate, Postgres
 
+## Description
+> Mixology-101 is a web-app which aimed to be the hub for cocktail recipe invention and sharing. This allows registered users and guests to take advantage of what the site has to offer; from browsing all creations to viewing and reviewing each drink's ingridient, preparation, rating alcohol content and more. Mixology-101 is built with React and Spring boot at its core and deployed through AWS EC2 instance.
+
 
 ## MIXOLOGY 101
 > Creating a bright future for all next generation bartenders
